@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
+
+$Back-color: #F4F0E1;
+$Text-color: #7C494B;
+$Disc-color: #F0F6FF;
+
+.line{
+    width: 100%;
+    height: 1px;
+    background-color: $Text-color;
+}

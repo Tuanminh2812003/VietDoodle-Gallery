@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
+
+$Back-color: #F4F0E1;
+$Text-color: #7C494B;
+$Disc-color: #F0F6FF;
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    color: $Text-color;
+    font-family: "MuseoModerno", sans-serif;
+    background-color: $Back-color;
+}
+
+.thuVien{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__title{
+        font-size: 35px;
+        text-align: center;
+    }
+
+    &__disc{
+        text-align: center;
+        margin-top: 10px;
+        width: 60%;
+    }
+}
+
+.search{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+
+    &__innerSearch{
+        width: 60%;
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        &__input{
+            width: 100%;
+            border-radius: 100px;
+            height: 70px;
+            background-color: $Disc-color;
+            font-size: 25px;
+            color: #7C494B;
+            padding-left: 60px;
+            border: #7C494B 2px solid;
+        }
+
+        &__input::placeholder{
+            color: #7C494B;
+            opacity: 0.8;
+        }
+
+        &__icon{
+            position: absolute;
+            left: 20px;
+            font-size: 35px;
+            top: 18px;
+            opacity: 0.8;
+        }
+        &__button{
+            position: absolute;
+            right: 22px;
+            background-color: $Back-color;
+            color: $Text-color;
+            border: $Text-color 2px solid;
+            width: 110px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        &__button:hover{
+            background-color: $Text-color;
+            color: $Back-color;
+            border: #7C494B 1px solid;
+        }
+    }
+}
+.sectionNew{
+    width: 100%;
+    margin-top: 20px;
+
+    &__box{
+        padding: 0px 150px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 40px;
+
+        &__innerBox{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+            height: 350px;
+            border: solid $Text-color 2px;
+            border-radius: 45px;
+            background-color: $Disc-color;
+            position: relative;
+            margin-bottom: 80px;
+            text-decoration: none;
+            color: $Text-color;
+            transition: all 0.2s ease-in;
+
+            &__image{
+                width: 80%;
+                height: 41%;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                transition: all 0.2s ease-in;
+            }
+
+            &__line{
+                width: 100%;
+                background-color: #4c0909;
+                height: 1px;
+            }
+
+            &__date{
+                width: 100%;
+                margin-left: 20%;
+                margin-top: 20px;
+                font-size: 17px;
+                font-weight: 400;
+            }
+
+            &__title{
+                position: absolute;
+                bottom: 35px;
+                height: 20%;
+                width: 88%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                font-size: 22px;
+                margin-top: 25px;
+            }
+        }
+        &__innerBox:hover{
+            box-shadow: 12px 12px 8px #ad5050;
+            transition: all 0.2s ease-in;
+        }
+        &__innerBox:hover > .sectionNew__box__innerBox__image{
+            height: 45%;
+            width: 82%;
+            transition: all 0.2s ease-in;
+        }
+    }
+}
+
+.pagi{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+.pagination{
+    display: flex;
+    align-items: center;
+
+    &__page{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 100px;
+        background-color: transparent;
+        border: $Text-color 2px solid;
+        margin: 0px 15px;
+        color: $Text-color;
+        cursor: pointer;
+        font-size: 20px;
+    }
+    &__page:hover{
+        background-color: $Text-color;
+        color: $Back-color;
+    }
+}
+
+.activePage {
+    background-color: $Text-color;
+    color: $Back-color;
+}
+
+.line_father{
+    display: flex;
+
+    &--up{
+        margin-top: 30px;
+    }
+}
+
+.line{
+    border: $Text-color 1.5px solid;
+}
+
+.selectSection{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+
+    select{
+        width: 240px;
+        height: 80px;
+        font-size: 20px;
+        padding-left: 30px;
+        background-color: $Back-color;
+        color: $Text-color;
+        border-left: $Text-color 2px solid;
+        border-right: none;
+        border-top: none;
+        border-bottom: none;
+        font-family: "MuseoModerno", sans-serif;
+        appearance: none; /* ẩn thanh cuộn mặc định */
+    }
+
+    select::-ms-expand {
+        display: none; /* ẩn biểu tượng mũi tên cho trình duyệt IE */
+    }
+    
+    /* Tùy chỉnh kiểu dáng của thanh cuộn */
+    select::-webkit-scrollbar {
+        width: 12px;
+    }
+    
+    select::-webkit-scrollbar-track {
+        background: $Back-color;
+    }
+    
+    select::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 6px;
+    }
+    
+    select::-webkit-scrollbar-thumb:hover {
+        background: $Text-color;
+    }
+
+    &--borderRight{
+        border-right: $Text-color 2px solid !important;
+    }
+}

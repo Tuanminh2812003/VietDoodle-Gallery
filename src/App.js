@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import LayoutDefault from "./layout/LayoutDefault";
+import Home from "./layout/Home";
+import ThuVien from "./layout/ThuVien";
+import CongCu from "./layout/CongCu";
+import HuongDan from "./layout/HuongDan";
+import DoodleDetail from "./layout/DoodleDetail";
+import DangNhap from "./layout/DangNhap";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path='/' element={<LayoutDefault/>}>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/thuvien' element={<ThuVien/>}/>
+          <Route path=':id' element={<DoodleDetail/>}/>
+          <Route path='/congcu' element={<CongCu/>}/>
+          <Route path='/huongdan' element={<HuongDan/>}/>
+        </Route>
+      </Routes>
+    </>
   );
 }
 

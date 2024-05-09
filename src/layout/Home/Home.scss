@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
+
+$Back-color: #F4F0E1;
+$Text-color: #7C494B;
+$Disc-color: #F0F6FF;
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    color: $Text-color;
+    font-family: "MuseoModerno", sans-serif;
+    background-color: $Back-color;
+}
+
+.sectionPic{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-image: url("../../image/Background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 550px;
+    position: relative;
+    text-decoration: none;
+    color: $Text-color;
+
+    &__image{
+        width: 98%;
+        height: 80%;
+        display: flex;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        position: absolute;
+        transition: all 0.2s ease-in;
+    }
+
+    &__image:hover{
+        height: 85%;
+        transition: all 0.3s ease-in;
+    }
+
+    &__box{
+        max-width: 300px;
+        background-color: $Disc-color;
+        position: relative;
+        opacity: 0.85;
+        left: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+
+        &__title{
+            text-align: center;
+            font-size: 40px;
+        }
+        &__disc{
+            margin-top: 50px;
+            font-size: 25px;
+        }
+    }
+}
+
+.sectionDisc{
+    display: flex;
+    padding: 50px 0px;
+
+    &__site1{
+        display: flex;
+        padding-left: 150px;
+        flex-direction: column;
+        justify-content: center;
+        width: 70%;
+
+        &__title{
+            font-size: 35px;
+        }
+
+        &__disc{
+            font-size: 18px;
+            margin-top: 40px;
+
+            &__innerDisc{
+                margin-bottom: 20px;
+            }
+        }
+    }
+    &__site2{
+        display: flex;
+        padding-right: 150px;
+        justify-content: center;
+        align-items: center;
+        width: 28%;
+        margin-left: 30px;
+
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+.sectionHow{
+    display: flex;
+    background-image: url("../../image/Background.png");
+    background-position: center;
+    padding: 60px 150px;
+
+    &__pic{
+        display: flex;
+        width: 48%;
+
+        img{
+            width: 100%;
+            height: auto;
+            border-radius: 50px;
+            box-shadow: 4px 4px 10px #4c0909;
+        }
+    }
+
+    &__text{
+        color: $Back-color;
+        width: 48%;
+        margin-left: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &__title{
+            font-size: 35px;
+        }
+
+        &__step{
+            list-style-type: none;
+            padding: 0px;
+            margin: 0px;
+            margin-top: 40px;
+
+            li{
+                font-size: 22px;
+                font-weight: 400;
+            }
+        }
+        &__button{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 100px;
+
+            &__detail{
+                background-color: $Back-color;
+                color: $Text-color;
+                font-size: 20px;
+                display: flex;
+                padding: 5px 50px;
+                align-items: center;
+                justify-content: center;
+                border-radius: 100px;
+                text-decoration: none;
+            }
+
+            &__detail:hover{
+                background-color: $Text-color;
+                color: $Back-color;
+                border: $Back-color 1px solid;
+                transition: all 0.1s ease-in;
+            }
+        }
+    }
+}
+
+.sectionNew{
+    width: 100%;
+    margin-top: 80px;
+
+    &__title{
+        width: 100%;
+        text-align: center;
+        font-size: 45px;
+        font-weight: 500;
+    }
+
+    &__box{
+        padding: 0px 150px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 40px;
+
+        &__innerBox{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+            height: 350px;
+            border: solid $Text-color 2px;
+            border-radius: 45px;
+            background-color: $Disc-color;
+            position: relative;
+            margin-bottom: 80px;
+            text-decoration: none;
+            color: $Text-color;
+            transition: all 0.2s ease-in;
+
+            &__image{
+                width: 80%;
+                height: 41%;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                transition: all 0.2s ease-in;
+            }
+
+            &__line{
+                width: 100%;
+                background-color: #4c0909;
+                height: 1px;
+            }
+
+            &__date{
+                width: 100%;
+                margin-left: 20%;
+                margin-top: 20px;
+                font-size: 17px;
+                font-weight: 400;
+            }
+
+            &__title{
+                position: absolute;
+                bottom: 35px;
+                height: 20%;
+                width: 88%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                font-size: 22px;
+                margin-top: 25px;
+            }
+        }
+        &__innerBox:hover{
+            box-shadow: 12px 12px 8px #ad5050;
+            transition: all 0.2s ease-in;
+        }
+        &__innerBox:hover > .sectionNew__box__innerBox__image{
+            height: 45%;
+            width: 82%;
+            transition: all 0.2s ease-in;
+        }
+    }
+}
+
+.sectionPopular{
+
+}
+
+.sectionCert{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 150px;
+    flex-direction: column;
+
+    &__title{
+        font-size: 35px;
+        text-align: center;
+    }
+
+    &__disc{
+        font-size: 25px;
+        text-align: center;
+        margin-top: -15px;
+    }
+
+    &__detail{
+        font-size: 18px;
+        margin-top: 10px;
+    }
+}
+
+.moreButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 80px;
+    
+    a{
+        text-decoration: none;
+    }
+
+    &__more{
+        width: 200px;
+        height: 50px;
+        color: $Text-color;
+        background-color: $Back-color;
+        border: $Text-color 2px solid;
+        border-radius: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        transition: all 0.3s ease-in;
+    }
+
+    &__more:hover{
+        color: $Back-color;
+        background-color: $Text-color;
+    }
+}

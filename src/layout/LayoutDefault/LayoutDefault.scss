@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
+
+$Back-color: #F4F0E1;
+$Text-color: #7C494B;
+$Disc-color: #F0F6FF;
+
+*{
+    box-sizing: border-box;
+    appearance: none; /* ẩn thanh cuộn mặc định */
+}
+*::-ms-expand {
+    display: none; /* ẩn biểu tượng mũi tên cho trình duyệt IE */
+}
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: $Back-color;
+    border: 2px $Disc-color solid;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: $Text-color;
+    border-radius: 6px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: $Text-color;
+}
+
+body{
+    color: $Text-color;
+    font-family: "MuseoModerno", sans-serif;
+    background-color: $Back-color;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    a{
+        display: flex;
+    }
+}
+
+.header--scrolled{
+    top: -90px;
+    transition: all 0.4s;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: $Back-color;
+    position: relative;
+
+    &__image{
+        width: 150px;
+        height: auto;
+        padding: 15px;
+
+        &--hiden{
+            width: 120px;
+            height: auto;
+            padding: 15px;
+            left: 150px;
+            bottom: -8px;
+            position: absolute;
+            bottom: -8px;
+            left: 100px;
+            opacity: 0;
+            transition: all 0.5s;
+        }
+
+        &--flex{
+            width: 120px;
+            height: auto;
+            padding: 15px;
+            left: 150px;
+            bottom: -8px;
+            position: absolute;
+            bottom: 1px;
+            left: 100px;
+            opacity: 1;
+            transition: all 0.5s ease-in;
+        }
+    }
+    &__menu{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        margin-right: 180px;
+
+        &__inner{
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 50%;
+            padding: 0px;
+            margin: 0px;
+            margin-right: 6%;
+
+            li{
+                display: flex;
+                height: 100%;
+                cursor: pointer;
+                padding: 20px;
+                font-size: 20px;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.2s ease-in;
+            }
+            li:hover{
+                background-color: #7C494B;
+                color: $Back-color;
+            }
+            a{
+                text-decoration: none;
+                color: #7C494B;
+            }
+        }
+    
+        &__find{
+            margin-left: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.75s ease-in;
+
+            &__icon{
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                font-size: 20px;
+                margin-right: 10px;
+                font-size: 30px;
+                position: relative;
+                cursor: pointer;
+            }
+            a{
+                text-decoration: none;
+            }
+            &__login{
+                font-size: 18px;
+                display: flex;
+                padding: 5px 10px;
+                background-color: $Disc-color;
+                border-radius: 100px;
+                border: $Text-color solid 1px;
+                color: $Text-color;
+                transition: all 0.3s ease-in;
+            }
+            &__login:hover{
+                background-color: $Text-color;
+                border: $Text-color solid 1px;
+                color: $Back-color;
+            }
+        }
+    }
+}
+
+.header__menu__find__icon__innerIcon{
+    position: absolute;
+    right: 5px;
+}
+
+.header__menu__find__icon__input{
+    opacity: 0;
+    display: flex;
+    width: 0px;
+    padding: 10px;
+    border-radius: 100px;
+    transition: all 0.75s ease-in;
+}
+
+.header__menu__find__icon__innerIcon:hover + .header__menu__find__icon__input{
+    opacity: 1;
+    width:200px;
+    transition: all 0.75s ease-in;
+}
+
+.header__menu__find__icon__input:hover{
+    opacity: 1;
+    width:200px;
+    transition: all 0.75s ease-in;
+}
+
+.footer{
+    background-image: url(../../image/Background.png);
+    display: flex;
+    width: 100%;
+    height: 200px;
+    background-position: center;
+    color: $Back-color;
+    justify-content: space-around;
+    font-size: 20px;
+    padding: 50px;
+
+    &__follow{
+        display: flex;
+        flex-direction: column;
+
+        &__us{
+
+        }
+        &__icon{
+            display: flex;
+
+            &__icon{
+                width: 30px;
+                height: 30px;
+                background-color: $Back-color;
+                margin-top: 30px;
+                margin-left: 20px;
+
+                &--marginLeft{
+                    width: 30px;
+                    height: 30px;
+                    background-color: $Back-color;
+                    margin-top: 30px;
+                    margin-left: 0px;
+                }
+            }
+        }
+    }
+    &__input{
+        
+        &__text{
+
+        }
+        &__email{
+            display: flex;
+            padding: 2px 2px;
+            border-radius: 100px;
+            border: solid $Back-color 2px;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+
+            &__text{
+                font-size: 15px;
+                font-weight: 300;
+                margin-left: 10px;
+            }
+            &__icon{
+                width: 30px;
+                height: 30px;
+                background-color: $Back-color;
+                border-radius: 100px;
+                color: #7C494B;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+}

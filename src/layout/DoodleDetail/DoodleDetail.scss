@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
+
+$Back-color: #F4F0E1;
+$Text-color: #7C494B;
+$Disc-color: #F0F6FF;
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    color: $Text-color;
+    font-family: "MuseoModerno", sans-serif;
+    background-color: $Back-color;
+}
+
+.detail{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 100px;
+    margin-top: 5px;
+    position: relative;
+
+    &__image{
+        width: 70%;
+        height: 550px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    &__add{
+        width: 100px;
+        height: 40px;
+        background-color: $Back-color;
+        border: solid $Text-color 2px;
+        border-radius: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 150px;
+        bottom: 100px;
+        font-weight: 500;
+        font-size: 25px;
+        cursor: pointer;
+    }
+
+    &__add:hover{
+        color: $Back-color;
+        background-color: $Text-color;
+    }
+}
+
+.date{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    &__disc{
+        font-size: 30px;
+        margin-top: 40px;
+    }
+
+    &__title{
+        font-size: 50px;
+        margin-bottom: 40px;
+        width: 60%;
+        text-align: center;
+    }
+}
+
+.des{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    
+    &__innerDes{
+        font-size: 25px;
+    }
+}
+
