@@ -7,24 +7,22 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 
 function DangNhap(){
     const [message, setMessage] = useState([]);
-    const [emailUser, setEmailUser] = useState([]);
     const navigate = useNavigate();
-
-    const dispath = useDispatch();
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-        const email = e.target[0].value;
-        setEmailUser(email);
-        const password = e.target[1].value;
+        const name = e.target[0].value;
+        const email = e.target[1].value;
+        const password = e.target[2].value;
         
-        if(email && password){
-            const response = await fetch('https://google-doodle-v2-v2.vercel.app/api/v1/user/login', {
+        if(email && password && name){
+            const response = await fetch('https://google-doodle-v2-v2.vercel.app/api/v1/user/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    fullName: `${name}`,
                     email: `${email}`,
                     password: `${password}`,
                 }),
@@ -36,27 +34,24 @@ function DangNhap(){
     }
     if(message.code === 200){
         console.log(message);
-        setCookie("email", emailUser, 30);
-        setCookie("token", message.token, 30);
-        dispath(checkLogin(true));
-        navigate("/")
+        navigate("/dangnhap");
     }
 
     return(
         <>
             <form onSubmit={handleSubmit}>
-                <h2>Đăng nhập</h2>
+                <h2>Đăng ký</h2>
+                <div>
+                    <input type="text"/>
+                </div>
                 <div>
                     <input type="email"/>
                 </div>
                 <div>
                     <input type="password"/>
                 </div>
-                <button>Đăng nhập</button>
+                <button>Đăng ký</button>
             </form>
-            <Link to="/dangky">
-                Dang Ky
-            </Link>
         </>
     )
 }

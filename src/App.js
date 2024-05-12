@@ -7,6 +7,9 @@ import CongCu from "./layout/CongCu";
 import HuongDan from "./layout/HuongDan";
 import DoodleDetail from "./layout/DoodleDetail";
 import DangNhap from "./layout/DangNhap";
+import DangXuat from "./layout/DangXuat";
+import DangKy from "./layout/DangKy";
+import PrivacyPolicy from "./layout/PrivacyPolicy";
 
 function App() {
   return (
@@ -18,6 +21,10 @@ function App() {
           <Route path=':id' element={<DoodleDetail/>}/>
           <Route path='/congcu' element={<CongCu/>}/>
           <Route path='/huongdan' element={<HuongDan/>}/>
+          <Route path='/dangnhap' element={<DangNhap/>}/>
+          <Route path='/dangxuat' element={<DangXuat/>}/>
+          <Route path='/dangky' element={<DangKy/>}/>
+          <Route path='/privacy' element={<PrivacyPolicy/>}/>
         </Route>
       </Routes>
     </>

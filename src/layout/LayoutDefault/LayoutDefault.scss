@@ -96,6 +96,7 @@ header{
         align-items: center;
         justify-content: end;
         margin-right: 180px;
+        height: 70px;
 
         &__inner{
             list-style-type: none;
@@ -106,6 +107,7 @@ header{
             padding: 0px;
             margin: 0px;
             margin-right: 6%;
+            height: 100%;
 
             li{
                 display: flex;
@@ -125,6 +127,7 @@ header{
             a{
                 text-decoration: none;
                 color: #7C494B;
+                height: 100%;
             }
         }
     
@@ -134,6 +137,7 @@ header{
             align-items: center;
             justify-content: center;
             transition: all 0.75s ease-in;
+            height: 100%;
 
             &__icon{
                 display: flex;
@@ -145,6 +149,82 @@ header{
                 position: relative;
                 cursor: pointer;
             }
+
+            &__user{
+                display: flex;
+                position: relative;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+
+                &--hidden{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: $Disc-color;
+                    position: absolute;
+                    top: 60px;
+                    opacity: 0;
+                    transition: all 0.3s ease-in;
+                    width: 200px;
+                    animation: slide 3s linear infinite;
+                    border-radius: 15px;
+                    visibility: hidden;
+
+                    &__nameUser{
+                        width: 100%;
+                        font-size: 25px;
+                        text-align: center;
+                        font-weight: 600;
+                        height: 50px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    a{
+                        width: 100%;
+                    }
+                    &__setting{
+                        width: 100%;
+                        text-align: center;
+                        display: flex;
+                        align-items: center;
+                        justify-content: start;
+                        font-size: 20px;
+                        color: #7C494B;
+                        padding: 0px 10px;
+                        border-top: 2px solid $Text-color;
+                    }
+                    &__setting:hover{
+                        background-color: #7C494B;
+                        color: $Back-color;
+                    }
+
+                    &__tamGiac{
+                        width: 0;
+                        height: 0;
+                        border-left: 10px solid transparent;
+                        border-right: 10px solid transparent;
+                        border-bottom: 10px solid $Disc-color;
+                        position: absolute;
+                        top: -10px;
+                    }
+                }
+            }
+
+            &__user:hover > .header__menu__find__user--hidden{
+                top: 85px;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            &__user:hover > .header__menu__find__user--hidden:hover{
+                top: 85px;
+                opacity: 1;
+                visibility: visible;
+            }
+
             a{
                 text-decoration: none;
             }
@@ -157,6 +237,18 @@ header{
                 border: $Text-color solid 1px;
                 color: $Text-color;
                 transition: all 0.3s ease-in;
+                width: 120px;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                cursor: pointer;
+                height: 40px;
+
+                &__icon{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
             }
             &__login:hover{
                 background-color: $Text-color;

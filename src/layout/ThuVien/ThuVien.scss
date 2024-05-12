@@ -239,6 +239,12 @@ body{
         border-bottom: none;
         font-family: "MuseoModerno", sans-serif;
         appearance: none; /* ẩn thanh cuộn mặc định */
+        transition: 0.2s all ease-in;
+    }
+
+    select:hover{
+        background-color: $Text-color;
+        color: $Back-color;
     }
 
     select::-ms-expand {

@@ -1,7 +1,7 @@
 function CongCu(){
     return(
         <>
-            CongCu
+            Bộ sưu tập
         </>
     )
 }

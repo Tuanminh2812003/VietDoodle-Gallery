@@ -13,17 +13,19 @@ function ThuVien(){
     const [dataRandom, setDataRandom] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [dataNewese, setDataNewese] = useState([]);
+    const[dataCate, setDataCate] = useState([]);
+    const[dataBase, setDataBase] = useState([]);
 
-    const [selectDay, setSelectDay] = useState([]);
     const [uniqueDatesArray, setUniqueDatesArray] = useState([]);
 
-    const [selectFormat, setSeclectFormat] = useState([]);
     const [uniqueFormatArray, setUniqueFormatArray] = useState([]);
 
-    const [selectCate, setSeclectCate] = useState([]);
     const[uniqueCateArray, setUniqueCateArray] = useState([]);
 
-    const [selectMode, setSelectMode] = useState([]);
+    const [selectedDay, setSelectedDay] = useState("");
+    const [selectedFormat, setSelectedFormat] = useState("");
+    const [selectedCate, setSelectedCate] = useState("");
+    const [selectedSort, setSelectedSort] = useState("moinhat"); // Thiết lập mặc định cho ô select sắp xếp
 
     useEffect(() => {
         fetchDataRandom();
@@ -47,14 +49,14 @@ function ThuVien(){
             .then(res => res.json())
             .then(data => {
                 const uniqueDateStrings = new Set(data.map(item => item.time.dateString));
-                const uniqueDatesArray = Array.from(uniqueDateStrings).sort((a, b) => {
+                const date = Array.from(uniqueDateStrings).sort((a, b) => {
                     // Chuyển đổi chuỗi ngày tháng thành đối tượng Date
                     const dateA = new Date(a.split('/').reverse().join('/'));
                     const dateB = new Date(b.split('/').reverse().join('/'));
                     // So sánh đối tượng Date
                     return dateA - dateB;
                 });
-                setUniqueDatesArray(uniqueDatesArray);
+                setUniqueDatesArray(date);
 
                 const uniqueFormatStrings = new Set(data.map(item => item.format));
                 const uniqueFormatArray = Array.from(uniqueFormatStrings);
@@ -62,14 +64,15 @@ function ThuVien(){
 
                 setQuantityPage(Math.ceil(data.length / limit));
                 setDataNewese(data);
+                setDataBase(data);
             })
             .catch(error => console.error("Error fetching newest doodles: ", error));
     };
-
     const fetchDataCate = () => {
         fetch(`https://google-doodle-v2-v2.vercel.app/api/v1/category`)
             .then(res => res.json())
             .then(data => {
+                setDataCate(data);
                 const uniqueCateStrings = new Set(data.map(item => item.title));
                 const uniqueCateArray = Array.from(uniqueCateStrings);
                 setUniqueCateArray(uniqueCateArray);
@@ -102,11 +105,6 @@ function ThuVien(){
         }
     }, [searchTerm, currentPage, dataNewese]);
     
-    const handlePageChange = (page) => {
-        setCurrentPage(page);
-        filterData(searchTerm, page); // Lọc dữ liệu khi chuyển trang
-    }
-    
     const handleChange = (e) => {
         setSearchTerm(e.target.value); // Cập nhật searchTerm khi người dùng nhập
     };
@@ -121,6 +119,92 @@ function ThuVien(){
     useEffect(() => {
         localStorage.setItem("currentPage", currentPage);
     }, [currentPage]);
+
+    const selectSort = (e) =>{
+        const sort = e.target.value;
+        setSelectedSort(sort);
+        setSelectedDay(""); // Đặt giá trị của ô select ngày về trống
+        setSelectedFormat(""); // Đặt giá trị của ô select định dạng về trống
+        setSelectedCate(""); // Đặt giá trị của ô select thể loại về trống
+        let sortedData = [...dataBase]; // Copy dataBase array
+        if(sort === "atoz"){
+            sortedData.sort((a, b) => a.slug.localeCompare(b.slug));
+        } else if(sort === "ztoa"){
+            sortedData.sort((a, b) => b.slug.localeCompare(a.slug));
+        } else if(sort === "moinhat"){
+            sortedData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        } else if(sort === "cunhat"){
+            sortedData.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        }
+
+        setDataNewese(sortedData);
+        filterData(searchTerm, currentPage, sortedData);
+    }
+
+    const selectDay = (e) => {
+        const date = e.target.value;
+        console.log(date);
+        setSelectedDay(date);
+        setSelectedFormat(""); // Đặt giá trị của ô select định dạng về trống
+        setSelectedCate(""); // Đặt giá trị của ô select thể loại về trống
+        setSelectedSort("moinhat"); // Đặt giá trị của ô select sắp xếp về mặc định
+        if (date === "") {
+            setDataNewese(dataBase);
+            filterData(searchTerm, currentPage);
+        } else {
+            // Ngược lại, lọc dữ liệu dựa trên ngày đã chọn
+            if(date === "nospecial"){
+                const filteredData = dataBase.filter(item => item.time.dateString === "");
+                setDataNewese(filteredData);
+                // Cập nhật lại số lượng trang dựa trên dữ liệu đã lọc
+                filterData(searchTerm, currentPage);
+            } else{
+                const filteredData = dataBase.filter(item => item.time.dateString === date);
+                setDataNewese(filteredData);
+                // Cập nhật lại số lượng trang dựa trên dữ liệu đã lọc
+                filterData(searchTerm, currentPage);
+            }
+        }
+    };
+
+    const selectFormat = (e) =>{
+        const format = e.target.value;
+        setSelectedFormat(format);
+        setSelectedDay(""); // Đặt giá trị của ô select ngày về trống
+        setSelectedCate(""); // Đặt giá trị của ô select thể loại về trống
+        setSelectedSort("moinhat"); // Đặt giá trị của ô select sắp xếp về mặc định
+        if (format === "") {
+            setDataNewese(dataBase);
+            filterData(searchTerm, currentPage);
+        } else {
+            const filteredData = dataBase.filter(item => item.format === format);
+            setDataNewese(filteredData);
+            filterData(searchTerm, currentPage);
+        }
+    }
+    const selectCate = (e) =>{
+        const cate = e.target.value;
+        setSelectedCate(cate);
+        setSelectedDay(""); // Đặt giá trị của ô select ngày về trống
+        setSelectedFormat(""); // Đặt giá trị của ô select định dạng về trống
+        setSelectedSort("moinhat"); // Đặt giá trị của ô select sắp xếp về mặc định
+        var filteredData2= [];
+        if (cate === "") {
+            setDataNewese(dataBase);
+            filterData(searchTerm, currentPage);
+        } else {
+            const filteredData = dataCate.filter(item => item.title === cate);
+            for(let i=0; i< dataBase.length; i++){
+                for(let j=0; j< dataBase[i].doodle_category_id.length; j++){
+                    if(dataBase[i].doodle_category_id[j] === filteredData[0]._id){
+                        filteredData2.push(dataBase[i])
+                    }
+                }
+            }
+            setDataNewese(filteredData2);
+            filterData(searchTerm, currentPage);
+        }
+    }
 
     return(
         <>
@@ -156,17 +240,21 @@ function ThuVien(){
                 <Line />
             </div>
             <div className="selectSection">
-                <select name="days" id="days" onChange={(e) => setSelectDay(e.target.value)}>
+                <select name="days" id="days" value={selectedDay} onChange={selectDay}>
                     <option key="" value="">
                         Ngày
                     </option>
                     {uniqueDatesArray.map(dateString => {
-                        const [day, month] = dateString.split('/');
-                        const formattedDate = `${day.padStart(2, '0')}/${month.padStart(2, '0')}`;
-                        return <option key={dateString} value={dateString}>{formattedDate}</option>;
+                        if(dateString !== ""){
+                            const [day, month] = dateString.split('/');
+                            const formattedDate = `${day.padStart(2, '0')}/${month.padStart(2, '0')}`;
+                            return <option key={dateString} value={dateString}>{formattedDate}</option>;
+                        }else{
+                            return <option key="nospecial" value="nospecial">Ngày bình thường</option>;
+                        }
                     })}
                 </select>
-                <select name="format" id="format" onChange={(e) => setSeclectFormat(e.target.value)}>
+                <select name="format" id="format" value={selectedFormat} onChange={selectFormat}>
                     <option key="" value="">
                         Định dạng
                     </option>
@@ -174,7 +262,7 @@ function ThuVien(){
                         <option key={format} value={format}>{format}</option>
                     ))}
                 </select>
-                <select name="cate" id="cate" onChange={(e) => setSeclectCate(e.target.value)}>
+                <select name="cate" id="cate" value={selectedCate} onChange={selectCate}>
                     <option key="" value="">
                         Thể loại
                     </option>
@@ -182,7 +270,7 @@ function ThuVien(){
                         <option key={cate} value={cate}>{cate}</option>
                     ))}
                 </select>
-                <select className="selectSection--borderRight" name="mode" id="mode" onChange={(e) => setSelectMode(e.target.value)}>
+                <select className="selectSection--borderRight" name="mode" id="mode" value={selectedSort} onChange={selectSort}>
                     <option key="moinhat" value="moinhat">
                         Mới nhất
                     </option>
