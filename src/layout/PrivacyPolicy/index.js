@@ -30,7 +30,7 @@ function PrivacyPolicy(){
                     For statistical purposes, the website <i>"https://viet-doodle-gallery.vercel.app/"</i> counts page views and link clicks. The language and time zone of visitors are anonymously sent to the web server.
                 </div>
                 <div className="disc">
-                    Updated: February 9, 2022 
+                    Updated: May 12, 2024 
                 </div>
             </div>
         </>
