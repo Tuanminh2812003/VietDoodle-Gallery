@@ -18,12 +18,15 @@ $Disc-color: #F0F6FF;
 
     &__image{
         width: 70%;
-        height: 550px;
+        height: auto;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
+        margin-bottom: 100px;
+        margin-top: 100px;
+        border-radius: 35px;
     }
-
+    
     &__add{
         width: 100px;
         height: 40px;
@@ -79,3 +82,20 @@ $Disc-color: #F0F6FF;
     }
 }
 
+.home__modal{
+    &--content{
+        &__aleart{
+            font-size: 25px;
+            margin-bottom: 40px;
+        }
+
+        &__link{
+            font-size: 20px;
+            color: #24674D;
+            text-decoration: none;
+        }
+        &__link:hover{
+            color: $Text-color;
+        }
+    }
+}

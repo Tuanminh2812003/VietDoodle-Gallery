@@ -39,7 +39,7 @@ $Disc-color: #F0F6FF;
         display: flex;
         background-color: $Disc-color;
         width: 100%;
-        padding: 60px;
+        padding: 80px 110px;
         border-radius: 30px;
         border: 2px $Text-color solid;
         flex-direction: column;
@@ -62,7 +62,7 @@ $Disc-color: #F0F6FF;
         }
         &__img{
             width: 100%;
-            height: 400px;
+            height: 360px;
             border-radius: 15px;
             margin-top: 20px;
         }

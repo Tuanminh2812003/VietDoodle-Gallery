@@ -27,6 +27,8 @@ function ThuVien(){
     const [selectedCate, setSelectedCate] = useState("");
     const [selectedSort, setSelectedSort] = useState("moinhat"); // Thiết lập mặc định cho ô select sắp xếp
 
+    const [data, setData] = useState(null); // State để lưu dữ liệu fetch
+
     useEffect(() => {
         fetchDataRandom();
         fetchDataNewest();

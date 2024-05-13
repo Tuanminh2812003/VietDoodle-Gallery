@@ -10,6 +10,7 @@ import { IoMdCloseCircleOutline } from "react-icons/io";
 function Home(){
 
     const [showModal, setShowModal] = useState(true); // State để kiểm soát hiển thị modal
+    const [showModalIntro, setShowModalIntro] = useState(false); // State để kiểm soát hiển thị modal
     const modalRef = useRef(null); // Ref cho modal
 
     var today = new Date();
@@ -58,11 +59,18 @@ function Home(){
         // Kiểm tra xem click có xảy ra bên ngoài modal không
         if (modalRef.current && !modalRef.current.contains(event.target)) {
             setShowModal(false); // Nếu click bên ngoài modal, đóng modal
+            setShowModalIntro(false);
         }
     };
 
     const handleEditClick = () => {
         setShowModal(true); // Khi nhấn vào nút "Sửa", hiển thị modal
+        setShowModalIntro(true); // Khi nhấn vào nút "Sửa", hiển thị modal
+    }
+
+    const introButton = () =>{
+        setShowModalIntro(true);
+        setShowModal(false);
     }
     
     return(
@@ -127,7 +135,7 @@ function Home(){
                     </div>
                     <ul className="sectionHow__text__step">
                         <li>
-                            Bước 1: Truy cập
+                            Bước 1: Truy cập extension: <Link className='sectionHow__text__step__link' to={"https://chromewebstore.google.com/?hl=vi"}>VietDoodle Gallery</Link>
                         </li>
                         <li>
                             Bước 2: Cài đặt extension
@@ -204,6 +212,14 @@ function Home(){
                     <div className='home__modal--buttonClose' onClick={() => setShowModal(false)}><IoMdCloseCircleOutline /></div>
                     <div className="home__modal--content" ref={modalContentRef}>
                         <img src={logo} className='home__modal--content__img'/>
+                        <div className='home__modal--content__intro'>
+                            <div className='home__modal--content__intro__text'>
+                                Chưa biết cách sử dụng?
+                            </div>
+                            <div className='home__modal--content__intro__button' onClick={introButton}>
+                                Nhấn vào đây!
+                            </div>
+                        </div>
                         <div className='home__modal--content__sanXuat'>
                             Sản phẩm được tạo bởi:
                         </div>
@@ -239,6 +255,18 @@ function Home(){
                                 Trang web đang trong quá trình demo và kiểm thử vậy nên còn nhiều lỗi phát sinh trong quá trình sử dụng, mong các bạn bỏ qua và phản hồi lại với chúng tôi.
                             </div>
                         </div>
+                    </div>
+                </div>
+            )}
+
+            {showModalIntro && (
+                <div className='home__backModal' onClick={() => setShowModalIntro(false)}></div>
+            )}
+            {showModalIntro && (
+                <div className="home__modal" ref={modalRef}>
+                    <div className='home__modal--buttonClose' onClick={() => setShowModalIntro(false)}><IoMdCloseCircleOutline /></div>
+                    <div className="home__modal--content" ref={modalContentRef}>
+                        <iframe width="1050" height="600" src="https://www.youtube.com/embed/IfgfaBFp7ro?si=afBthqVqg1p6YHLA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             )}

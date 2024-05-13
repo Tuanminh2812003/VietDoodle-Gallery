@@ -103,7 +103,7 @@ function LayoutDefault(){
                                         <div className="header__menu__find__user--hidden__tamGiac"></div>
                                         <div className="header__menu__find__user--hidden__nameUser">TK: {nameUser}</div>
                                         <Link to="/congcu" className="header__menu__find__user--hidden__setting">Bộ sưu tập</Link>
-                                    <Link to="/taikhoan" className="header__menu__find__user--hidden__setting">Quản lý tài khoản</Link>
+                                        <Link to="/taikhoan" className="header__menu__find__user--hidden__setting">Quản lý tài khoản</Link>
                                         <NavLink to="/dangxuat">
                                             <div className="header__menu__find__user--hidden__setting">Đăng xuất</div>
                                         </NavLink>

@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap');
 $Back-color: #F4F0E1;
 $Text-color: #7C494B;
 $Disc-color: #F0F6FF;
@@ -63,6 +62,7 @@ header{
         width: 150px;
         height: auto;
         padding: 15px;
+        animation: colorChange 10s linear infinite;
 
         &--hiden{
             width: 120px;
@@ -75,6 +75,7 @@ header{
             left: 100px;
             opacity: 0;
             transition: all 0.5s;
+            animation: colorChange 10s linear infinite;
         }
 
         &--flex{
@@ -167,10 +168,10 @@ header{
                     top: 60px;
                     opacity: 0;
                     transition: all 0.3s ease-in;
-                    width: 200px;
                     animation: slide 3s linear infinite;
                     border-radius: 15px;
                     visibility: hidden;
+                    width: 250px;
 
                     &__nameUser{
                         width: 100%;
@@ -259,7 +260,10 @@ header{
         }
     }
 }
-
+@keyframes colorChange {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
 .header__menu__find__icon__innerIcon{
     position: absolute;
     right: 5px;
