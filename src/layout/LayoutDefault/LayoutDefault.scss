@@ -223,6 +223,7 @@ header{
                 top: 85px;
                 opacity: 1;
                 visibility: visible;
+                box-shadow: 12px 12px 8px #ad5050;
             }
 
             a{
@@ -295,6 +296,19 @@ header{
     justify-content: space-around;
     font-size: 20px;
     padding: 50px;
+
+    &__about{
+        display: flex;
+        flex-direction: column;
+
+        a{
+            text-decoration: none;
+            color: $Back-color;
+        }
+        a:hover{
+            color: rgb(198, 141, 198);
+        }
+    }
 
     &__follow{
         display: flex;

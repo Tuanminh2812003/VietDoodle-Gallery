@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
+
+$Back-color: #F4F0E1;
+$Text-color: #7C494B;
+$Disc-color: #F0F6FF;
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    color: $Text-color;
+    font-family: "MuseoModerno", sans-serif;
+    background-color: $Back-color;
+}
+
+.editUser{
+    width: 100%;
+    padding: 80px 300px;
+    display: flex;
+    flex-direction: column;
+
+    &__title{
+        font-size: 40px;
+        width: 100%;
+        text-align: center;
+        font-weight: 500;
+    }
+    &__fullNameAndId{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+
+        &__fullName{
+            font-size: 30px;
+        }
+    }
+
+    &__fix{
+        display: flex;
+        width: 100%;
+        align-items: end;
+        margin-bottom: 20px;
+        justify-content: space-between;
+
+        &__innerFix{
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+
+            &__title{
+                font-size: 17px;
+                margin-left: 25px;
+                margin-bottom: 5px;
+            }
+            &__input{
+                display: flex;
+                align-items: center;
+                width: 100%;
+                padding-left: 20px;
+                height: 55px;
+                background-color: $Disc-color;
+                border-radius: 100px;
+                font-size: 20px;
+                font-weight: 500;
+                border: $Text-color 2px solid;
+                cursor:no-drop;
+
+                p{
+                    padding: 0px;
+                    margin: 0px;
+                    opacity: 0.7;
+                }
+            }
+        }
+        &__button{
+            width: 18%;
+            background-color: $Text-color;
+            color: $Back-color;
+            height: 55px;
+            border-radius: 100px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease-in;
+            cursor: pointer;
+
+            &--hidden{
+                opacity: 0;
+            }
+        }
+        &__button:hover{
+            background-color: $Back-color;
+            color: $Text-color;
+            border: 2px $Text-color solid;
+        }
+    }
+}
+
+.backModal{
+    width: 100%;
+    height: 100%;
+    background-color:rgb(44, 44, 44);
+    position: fixed;
+    top: 0px;
+    z-index: 5000;
+    opacity: 0.5;
+}
+
+.modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    background-color: $Back-color;
+    padding: 50px;
+    display: flex;
+    z-index: 9999;
+    animation: slideIn 0.5s ease-in-out forwards;
+    border-radius: 30px;
+
+    &--buttonClose{
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    &--buttonClose:hover{
+        color: rgb(205, 81, 81);
+    }
+    &--content{
+        
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            label{
+                width: 100%;
+            }
+
+            input{
+                width: 400px;
+                font-size: 20px;
+                border-radius: 100px;
+                padding: 10px;
+                margin-top: 10px;
+                border: $Text-color 2px solid;
+                background-color: white;
+            }
+
+            button{
+                background-color: $Text-color;
+                color: $Back-color;
+                margin-top: 40px;
+                border-radius: 100px;
+                width: 200px;
+                padding: 10px;
+                font-size: 20px;
+                cursor: pointer;
+                transition: 0.3s all ease-in;
+            }
+
+            button:hover{
+                background-color: white;
+                color: $Text-color 2px solid;
+                color: $Text-color;
+            }
+        }
+    }
+}
+
+@keyframes slideIn {
+    from {
+        top: -100%; /* Modal ẩn bên trên màn hình */
+        opacity: 0; /* Modal ban đầu không hiển thị */
+    }
+    to {
+        top: 50%; /* Hiển thị modal ở giữa màn hình */
+        opacity: 1; /* Hiển thị modal với opacity đầy đủ */
+    }
+}

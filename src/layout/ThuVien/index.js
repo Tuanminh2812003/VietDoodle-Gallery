@@ -245,12 +245,12 @@ function ThuVien(){
                         Ngày
                     </option>
                     {uniqueDatesArray.map(dateString => {
-                        if(dateString !== ""){
+                        if (/\d{2}\/\d{2}/.test(dateString)) {
                             const [day, month] = dateString.split('/');
                             const formattedDate = `${day.padStart(2, '0')}/${month.padStart(2, '0')}`;
                             return <option key={dateString} value={dateString}>{formattedDate}</option>;
-                        }else{
-                            return <option key="nospecial" value="nospecial">Ngày bình thường</option>;
+                        } else {
+                            return <option key={dateString} value={dateString}>Ngày bình thường</option>;
                         }
                     })}
                 </select>

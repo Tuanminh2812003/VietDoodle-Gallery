@@ -10,6 +10,8 @@ import DangNhap from "./layout/DangNhap";
 import DangXuat from "./layout/DangXuat";
 import DangKy from "./layout/DangKy";
 import PrivacyPolicy from "./layout/PrivacyPolicy";
+import SuKien from "./layout/SuKien";
+import EditUser from "./layout/EditUser";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path='/dangxuat' element={<DangXuat/>}/>
           <Route path='/dangky' element={<DangKy/>}/>
           <Route path='/privacy' element={<PrivacyPolicy/>}/>
+          <Route path='/sukien' element={<SuKien/>}/>
+          <Route path='/taikhoan' element={<EditUser/>}/>
         </Route>
       </Routes>
     </>

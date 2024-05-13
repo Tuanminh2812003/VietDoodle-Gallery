@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { checkLogin } from "../../actions/DangNhap";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import './DangNhap.scss';
 
 function DangNhap(){
     const [message, setMessage] = useState([]);
@@ -44,19 +45,23 @@ function DangNhap(){
 
     return(
         <>
-            <form onSubmit={handleSubmit}>
-                <h2>Đăng nhập</h2>
-                <div>
-                    <input type="email"/>
+            <div className="dangNhap">
+                <div className="dangNhap__title">Đăng nhập vào VietDoodle Gallery</div>
+                <div className="dangNhap__dangKy">
+                    <div className="dangNhap__dangKy__text">Bạn chưa có tài khoản?</div>
+                    <Link to="/dangky" className="dangNhap__dangKy__button">
+                        Đăng ký ngay!
+                    </Link>
                 </div>
-                <div>
-                    <input type="password"/>
-                </div>
-                <button>Đăng nhập</button>
-            </form>
-            <Link to="/dangky">
-                Dang Ky
-            </Link>
+                <form onSubmit={handleSubmit}>
+                    <input type="email" placeholder="Email"/>
+                    <input type="password" placeholder="Password"/>
+                    <Link to="/dangky" className="forgot">
+                        Quên mật khẩu
+                    </Link>
+                    <button>Đăng nhập</button>
+                </form>
+            </div>
         </>
     )
 }
