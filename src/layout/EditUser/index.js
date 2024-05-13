@@ -18,6 +18,7 @@ function EditUser(){
     const [showModalSaiMk, setShowModalSaiMk] = useState(false); // State để kiểm soát hiển thị modal
     const [showModalTrungMk, setShowModalTrungMk] = useState(false); // State để kiểm soát hiển thị modal
     const modalRef = useRef(null); // Ref cho modal
+    const modalContentRef = useRef(null);
 
     useEffect(() => {
         fetchDataUser();
@@ -153,7 +154,7 @@ function EditUser(){
             {showModalName && (
                 <div className="modal" ref={modalRef}>
                     <div className='modal--buttonClose' onClick={() => setShowModalName(false)}><IoMdCloseCircleOutline /></div>
-                    <div className="modal--content">
+                    <div className="modal--content" ref={modalContentRef}>
                         <form  onSubmit={handleSubmitName}>
                             <label>Xác minh mật khẩu:</label>
                             <input type="text"/>
@@ -171,7 +172,7 @@ function EditUser(){
             {showModalPass && (
                 <div className="modal" ref={modalRef}>
                     <div className='modal--buttonClose' onClick={() => setShowModalPass(false)}><IoMdCloseCircleOutline /></div>
-                    <div className="modal--content">
+                    <div className="modal--content" ref={modalContentRef}>
                         <form onSubmit={handleSubmitPass}> 
                             <label>Xác minh mật khẩu:</label>
                             <input type="password" />
@@ -191,17 +192,17 @@ function EditUser(){
             {showModalSaiMk && (
                 <div className="SaiMk__modal" ref={modalRef}>
                     <div className='SaiMk__modal--buttonClose' onClick={() => setShowModalSaiMk(false)}><IoMdCloseCircleOutline /></div>
-                    <div className='SaiMk__modal--content'>Mật khẩu cũ không đúng!</div>
+                    <div className='SaiMk__modal--content' ref={modalContentRef}>Mật khẩu cũ không đúng!</div>
                 </div>
             )}
 
             {showModalTrungMk && (
                 <div className='TrungMk__backModal' onClick={() => setShowModalTrungMk(false)}></div>
             )}
-            {showModalSaiMk && (
+            {showModalTrungMk && (
                 <div className="TrungMk__modal" ref={modalRef}>
                     <div className='TrungMk__modal--buttonClose' onClick={() => setShowModalTrungMk(false)}><IoMdCloseCircleOutline /></div>
-                    <div className='TrungMk__modal--content'>Mật khẩu xác minh phải trùng với mật khẩu mới!</div>
+                    <div className='TrungMk__modal--content' ref={modalContentRef}>Mật khẩu xác minh phải trùng với mật khẩu mới!</div>
                 </div>
             )}
         </>

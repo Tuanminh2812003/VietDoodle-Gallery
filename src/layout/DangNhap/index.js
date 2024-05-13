@@ -19,6 +19,8 @@ function DangNhap(){
 
     const dispatch = useDispatch();
 
+    const modalContentRef = useRef(null);
+
     const handleSubmit = async (e) =>{
         e.preventDefault();
         const email = e.target[0].value;
@@ -96,7 +98,7 @@ function DangNhap(){
             {showModalSaiTk && textAleart && (
                 <div className="dangNhap__modal" ref={modalRef}>
                     <div className='dangNhap__modal--buttonClose' onClick={() => setShowModalSaiTk(false)}><IoMdCloseCircleOutline /></div>
-                    <div className="dangNhap__modal--content">
+                    <div className="dangNhap__modal--content" ref={modalContentRef}>
                         {textAleart}
                     </div>
                     <div className='dangNhap__modal__dangKy'>

@@ -17,6 +17,8 @@ function Home(){
     console.log(date);
 
     const [data, setData] = useState(null);
+
+    const modalContentRef = useRef(null);
     useEffect(()=>{
         fetch(`https://google-doodle-v2-v2.vercel.app/api/v1/doodle/detail/661a4816d1818c2981bee5d5`)
             .then(res=>res.json())
@@ -200,7 +202,7 @@ function Home(){
             {showModal && (
                 <div className="home__modal" ref={modalRef}>
                     <div className='home__modal--buttonClose' onClick={() => setShowModal(false)}><IoMdCloseCircleOutline /></div>
-                    <div className="home__modal--content">
+                    <div className="home__modal--content" ref={modalContentRef}>
                         <img src={logo} className='home__modal--content__img'/>
                         <div className='home__modal--content__sanXuat'>
                             Sản phẩm được tạo bởi:
