@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
-import "./Home.scss"
-import Thumbnail from "../../image/thumbnail.png"
-import Line from "../../components/Line"
-import howPic from "../../image/sectionHow.jpg"
+import { useState, useEffect, useRef } from 'react';
+import "./Home.scss";
+import Thumbnail from "../../image/thumbnail.png";
+import Line from "../../components/Line";
+import howPic from "../../image/sectionHow.jpg";
+import logo from "../../image/logo vuông.png";
 import { Link } from "react-router-dom";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 function Home(){
+
+    const [showModal, setShowModal] = useState(true); // State để kiểm soát hiển thị modal
+    const modalRef = useRef(null); // Ref cho modal
 
     var today = new Date();
     var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
@@ -46,6 +51,17 @@ function Home(){
                 setDataPopular(data.slice(0,9));
             })
     },[])
+
+    const handleClickOutside = (event) => {
+        // Kiểm tra xem click có xảy ra bên ngoài modal không
+        if (modalRef.current && !modalRef.current.contains(event.target)) {
+            setShowModal(false); // Nếu click bên ngoài modal, đóng modal
+        }
+    };
+
+    const handleEditClick = () => {
+        setShowModal(true); // Khi nhấn vào nút "Sửa", hiển thị modal
+    }
     
     return(
         <>
@@ -177,6 +193,53 @@ function Home(){
                     Đảm bảo rằng VietDoodle Gallery là một phần mềm sạch 100%. Sản phẩm phần mềm này đã được kiểm tra kỹ lưỡng và được đánh giá là hoàn toàn sạch sẽ; do đó, nó có thể được cài đặt mà không cần quan tâm đến bất kỳ vấn đề bảo mật dự liệu nào
                 </div>
             </div>
+
+            {showModal && (
+                <div className='home__backModal' onClick={() => setShowModal(false)}></div>
+            )}
+            {showModal && (
+                <div className="home__modal" ref={modalRef}>
+                    <div className='home__modal--buttonClose' onClick={() => setShowModal(false)}><IoMdCloseCircleOutline /></div>
+                    <div className="home__modal--content">
+                        <img src={logo} className='home__modal--content__img'/>
+                        <div className='home__modal--content__sanXuat'>
+                            Sản phẩm được tạo bởi:
+                        </div>
+                        <div className='home__modal--content__name'>
+                            Lê Hoàng Anh - B21DCPT044
+                        </div>
+                        <div className='home__modal--content__name'>
+                            Đỗ Trung Hiếu - B21DCPT011
+                        </div>
+                        <div className='home__modal--content__name'>
+                            Hoàng Thị Hồng Lê - B21DCPT139
+                        </div>
+                        <div className='home__modal--content__name'>
+                            Đỗ Tuấn Minh - B21DCPT023
+                        </div>
+                        <div className='home__modal--content__name'>
+                            Trịnh Xuân Phong - B21DCPT182
+                        </div>
+                        <div className='home__modal--content__name'>
+                            Đỗ Đăng Tuân - B21DCPT225
+                        </div>
+                        <div className='home__modal--content__sanXuat'>
+                            Chúng em cảm ơn sự hướng dẫn của cô:
+                        </div>
+                        <div className='home__modal--content__name'>
+                            Giảng viên: Vũ Thị Tú Anh
+                        </div>
+                        <div className='home__modal--content__disc'>
+                            <div className='home__modal--content__disc__innerDisc'>
+                                Trang web sử dụng với mục đích phi thương mại, nếu có vấn đề về bản quyền vui lòng liên hệ: 0911080790
+                            </div>
+                            <div className='home__modal--content__disc__innerDisc'>
+                                Trang web đang trong quá trình demo và kiểm thử vậy nên còn nhiều lỗi phát sinh trong quá trình sử dụng, mong các bạn bỏ qua và phản hồi lại với chúng tôi.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     )
 }

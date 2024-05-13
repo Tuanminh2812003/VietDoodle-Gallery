@@ -8,12 +8,6 @@ $Disc-color: #F0F6FF;
     box-sizing: border-box;
 }
 
-body{
-    color: $Text-color;
-    font-family: "MuseoModerno", sans-serif;
-    background-color: $Back-color;
-}
-
 .sectionPic{
     display: flex;
     align-items: center;
@@ -314,5 +308,74 @@ body{
     &__more:hover{
         color: $Back-color;
         background-color: $Text-color;
+    }
+}
+
+.home__backModal{
+    width: 100%;
+    height: 100%;
+    background-color:rgb(44, 44, 44);
+    position: fixed;
+    top: 0px;
+    z-index: 5000;
+    opacity: 0.5;
+}
+
+.home__modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $Back-color;
+    padding: 40px 80px;
+    display: flex;
+    z-index: 9999;
+    animation: slideIn 0.8s ease-in-out forwards;
+    border-radius: 30px;
+
+    &--buttonClose{
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    &--buttonClose:hover{
+        color: rgb(205, 81, 81);
+    }
+    &--content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &__img{
+            width: 100px;
+            height: auto;
+        }
+        &__sanXuat{
+            margin-top: 30px;
+            color: #24674D;
+        }
+        &__name{
+            font-size: 24px;
+        }
+        &__disc{
+            font-size: 12px;
+            width: 100%;
+            margin-top: 60px;
+            opacity: 0.8;
+        }
+    }
+}
+
+@keyframes slideIn {
+    from {
+        top: -100%; /* Modal ẩn bên trên màn hình */
+        opacity: 0; /* Modal ban đầu không hiển thị */
+    }
+    to {
+        top: 50%; /* Hiển thị modal ở giữa màn hình */
+        opacity: 1; /* Hiển thị modal với opacity đầy đủ */
     }
 }

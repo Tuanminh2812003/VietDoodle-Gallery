@@ -1,17 +1,23 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import { setCookie } from "../../components/Cookies/Cookies"
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { checkLogin } from "../../actions/DangNhap";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 import './DangNhap.scss';
 
 function DangNhap(){
+
+    const [showModalSaiTk, setShowModalSaiTk] = useState(false); // State để kiểm soát hiển thị modal
+    const modalRef = useRef(null); // Ref cho modal
+
     const [message, setMessage] = useState([]);
     const [emailUser, setEmailUser] = useState([]);
+    const [textAleart, setTextAleart] = useState(""); // Thêm state để chứa thông báo lỗi
     const navigate = useNavigate();
 
-    const dispath = useDispatch();
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
@@ -35,12 +41,33 @@ function DangNhap(){
             .catch(error => console.error('Error:', error));
         }
     }
-    if(message.code === 200){
-        console.log(message);
-        setCookie("email", emailUser, 30);
-        setCookie("token", message.token, 30);
-        dispath(checkLogin(true));
-        navigate("/")
+
+    console.log(message);
+
+    useEffect(() => {
+        if(message.code === 200){
+            setCookie("email", emailUser, 30);
+            setCookie("token", message.token, 30);
+            dispatch(checkLogin(true));
+            navigate("/")
+        } else if(message.code === 400){
+            setTextAleart("Sai mật khẩu!"); // Cập nhật state textAleart
+            setShowModalSaiTk(true); // Hiển thị modal khi có lỗi
+        } else if(message.code === 404){
+            setTextAleart("Sai tài khoản!"); // Cập nhật state textAleart
+            setShowModalSaiTk(true); // Hiển thị modal khi có lỗi
+        }
+    }, [message]); // Chạy lại effect khi message thay đổi
+
+    const handleClickOutside = (event) => {
+        // Kiểm tra xem click có xảy ra bên ngoài modal không
+        if (modalRef.current && !modalRef.current.contains(event.target)) {
+            setShowModalSaiTk(false); // Nếu click bên ngoài modal, đóng modal
+        }
+    };
+
+    const handleEditClick = () => {
+        setShowModalSaiTk(true); // Khi nhấn vào nút "Sửa", hiển thị modal
     }
 
     return(
@@ -62,6 +89,24 @@ function DangNhap(){
                     <button>Đăng nhập</button>
                 </form>
             </div>
+
+            {showModalSaiTk && textAleart && (
+                <div className='dangNhap__backModal' onClick={() => setShowModalSaiTk(false)}></div>
+            )}
+            {showModalSaiTk && textAleart && (
+                <div className="dangNhap__modal" ref={modalRef}>
+                    <div className='dangNhap__modal--buttonClose' onClick={() => setShowModalSaiTk(false)}><IoMdCloseCircleOutline /></div>
+                    <div className="dangNhap__modal--content">
+                        {textAleart}
+                    </div>
+                    <div className='dangNhap__modal__dangKy'>
+                        <div className="dangNhap__dangKy__text">Bạn chưa có tài khoản?</div>
+                        <Link to="/dangky" className="dangNhap__dangKy__button">
+                            Đăng ký ngay!
+                        </Link>
+                    </div>
+                </div>
+            )}
         </>
     )
 }

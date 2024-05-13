@@ -40,7 +40,7 @@ function DangKy(){
     return(
         <>
             <div className="dangNhap">
-                <div className="dangNhap__title">Đăng nhập vào VietDoodle Gallery</div>
+                <div className="dangNhap__title">Trở thành thành viên của VietDoodle Gallery ngay hôm nay</div>
                 <div className="dangNhap__dangKy">
                     <div className="dangNhap__dangKy__text">Bạn đã có tài khoản?</div>
                     <Link to="/dangnhap" className="dangNhap__dangKy__button">
