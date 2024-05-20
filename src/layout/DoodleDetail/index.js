@@ -214,7 +214,7 @@ function DoodleDetail(){
                         <div className="home__modal--content__invite">
                             Bạn muốn sử dụng dịch vụ của chúng tôi? Truy cập ngay extension:
                         </div>
-                        <Link className='home__modal--content__link' to={"https://chromewebstore.google.com/?hl=vi"}>VietDoodle Gallery</Link>
+                        <Link className='home__modal--content__link' to={"https://chromewebstore.google.com/detail/vietdoodle-gallery/kallkjgnjobgebgdlmdffihffoiibajf?hl=vi"}>VietDoodle Gallery</Link>
                     </div>
                 </div>
             )}

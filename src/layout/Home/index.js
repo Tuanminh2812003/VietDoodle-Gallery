@@ -135,7 +135,7 @@ function Home(){
                     </div>
                     <ul className="sectionHow__text__step">
                         <li>
-                            Bước 1: Truy cập extension: <Link className='sectionHow__text__step__link' to={"https://chromewebstore.google.com/?hl=vi"}>VietDoodle Gallery</Link>
+                            Bước 1: Truy cập extension: <Link className='sectionHow__text__step__link' to={"https://chromewebstore.google.com/detail/vietdoodle-gallery/kallkjgnjobgebgdlmdffihffoiibajf?hl=vi"}>VietDoodle Gallery</Link>
                         </li>
                         <li>
                             Bước 2: Cài đặt extension
