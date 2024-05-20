@@ -37,7 +37,7 @@ function EditUser(){
             const findUser = userData.find(item => item.email === emailUser);
             setDataUser(findUser);
         } catch (error) {
-            console.error("Error fetching data:", error);
+            
         }
     }
 

@@ -49,7 +49,7 @@ function DangNhap(){
     useEffect(() => {
         if(message.code === 200){
             setCookie("email", emailUser, 30);
-            setCookie("token", message.token, 30);
+            setCookie("token", message.user.token, 30);
             dispatch(checkLogin(true));
             navigate("/")
         } else if(message.code === 400){

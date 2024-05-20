@@ -1,19 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
+$Back-color: #F4F0E1;
+$Text-color: #7C494B;
+$Disc-color: #F0F6FF;
 .huongDan{
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 20px 150px;
-    align-items: center;
-    justify-content: center;
 
     &__title{
         font-size: 30px;
         font-weight: 500;
         margin-top: 60px;
+        width: 100%;
+        text-align: center;
     }
 
     &__disc{
         font-size: 20px;
         margin-bottom: 80px;
+        width: 100%;
+        text-align: center;
     }
+
+    &__innerHuongDan{
+        display: flex;
+        justify-content: space-between;
+
+        &__bar{
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+
+            &__box{
+                width: 100%;
+                background-color: $Disc-color;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px;
+                border-radius: 15px;
+                border: 2px $Text-color solid;
+                cursor: pointer;
+            }
+            &__box:hover{
+                background-color: $Text-color;
+                color: $Back-color;
+            }
+            &__box.active{
+                background-color: $Text-color;
+                color: $Back-color;
+            }
+        }
+
+        &__video{
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+        }
+    }
+}
+video{
+    border-radius: 30px;
+}
+
+.hidden{
+    display: none;
 }

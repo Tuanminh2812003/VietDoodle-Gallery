@@ -91,7 +91,7 @@ function LayoutDefault(){
                                 <MdOutlineSavedSearch className="header__menu__find__icon__innerIcon"/>
                                 <input className="header__menu__find__icon__input" placeholder="Tìm Doodle"/>
                             </div>
-                            {token ? (
+                            {token && token !== 'undefined' ?(
                                 <div className="header__menu__find__user">
                                     <div className="header__menu__find__login">
                                         <div className="header__menu__find__login__text">Cài đặt</div>
