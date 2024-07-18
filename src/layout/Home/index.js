@@ -13,6 +13,9 @@ function Home(){
     const [showModalIntro, setShowModalIntro] = useState(false); // State để kiểm soát hiển thị modal
     const modalRef = useRef(null); // Ref cho modal
 
+    const[minh, setMinh] = useState(true);
+    setMinh(false);
+
     var today = new Date();
     var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
     console.log(date);
@@ -23,10 +26,10 @@ function Home(){
     useEffect(()=>{
         fetch(`https://google-doodle-v2-v2.vercel.app/api/v1/doodle/detail/661a4816d1818c2981bee5d5`)
             .then(res=>res.json())
-            .then(data => {
-                setData(data);
+            .then(db => {
+                setData(db);
             })
-    },[])
+    },[minh])
 
     const [dataNewese, setDataNewese] = useState([]);
     useEffect(()=>{
@@ -224,22 +227,22 @@ function Home(){
                             Sản phẩm được tạo bởi:
                         </div>
                         <div className='home__modal--content__name'>
-                            Lê Hoàng Anh - B21DCPT044
+                            Lê Hoàng Anh
                         </div>
                         <div className='home__modal--content__name'>
-                            Đỗ Trung Hiếu - B21DCPT011
+                            Đỗ Trung Hiếu
                         </div>
                         <div className='home__modal--content__name'>
-                            Hoàng Thị Hồng Lê - B21DCPT139
+                            Hoàng Thị Hồng Lê
                         </div>
                         <div className='home__modal--content__name'>
-                            Đỗ Tuấn Minh - B21DCPT023
+                            Đỗ Tuấn Minh
                         </div>
                         <div className='home__modal--content__name'>
-                            Trịnh Xuân Phong - B21DCPT182
+                            Trịnh Xuân Phong
                         </div>
                         <div className='home__modal--content__name'>
-                            Đỗ Đăng Tuân - B21DCPT225
+                            Đỗ Đăng Tuân
                         </div>
                         <div className='home__modal--content__sanXuat'>
                             Chúng em cảm ơn sự hướng dẫn của cô:
