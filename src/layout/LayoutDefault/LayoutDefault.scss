@@ -418,13 +418,15 @@ header{
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -50%);
     background-color: $Back-color;
     padding: 50px;
     display: flex;
     z-index: 9999;
     animation: slideIn 0.5s ease-in-out forwards;
     border-radius: 30px;
+    height: 80vh;
+    overflow: auto;
 
     &--buttonClose{
         position: absolute;
@@ -507,13 +509,15 @@ header{
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -50%);
     background-color: $Back-color;
     padding: 50px;
     display: flex;
     z-index: 9999;
     animation: slideIn 0.5s ease-in-out forwards;
     border-radius: 30px;
+    height: 80vh;
+    overflow: auto;
 
     &--buttonClose{
         position: absolute;
