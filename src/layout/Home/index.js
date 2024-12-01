@@ -205,7 +205,7 @@ function Home() {
                 </div>
             </div>
 
-            {showModal && (
+            {/* {showModal && (
                 <div className='home__backModal' onClick={() => setShowModal(false)}></div>
             )}
             {showModal && (
@@ -270,7 +270,7 @@ function Home() {
                         <iframe width="1050" height="600" src="https://www.youtube.com/embed/IfgfaBFp7ro?si=afBthqVqg1p6YHLA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
-            )}
+            )} */}
         </>
     );
 }
